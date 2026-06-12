@@ -10,6 +10,7 @@ interface LetterScreenProps {
 
 export const LetterScreen = ({ letter }: LetterScreenProps) => {
   const [isOpening, setIsOpening] = useState(true);
+  const [isGiftOpen, setIsGiftOpen] = useState(false);
 
   useEffect(() => {
     const timer = window.setTimeout(() => setIsOpening(false), 2550);
@@ -79,25 +80,85 @@ export const LetterScreen = ({ letter }: LetterScreenProps) => {
           </motion.div>
         ) : (
           <motion.div
-            key="letter"
-            className={styles.letterReveal}
-            initial={{ opacity: 0, y: -90, scaleY: 0.7, scaleX: 0.94, transformOrigin: '50% 100%' }}
-            animate={{ opacity: 1, y: 0, scaleY: 1, scaleX: 1 }}
+            key={isGiftOpen ? 'gift' : 'letter'}
+            className={isGiftOpen ? styles.giftScreen : styles.letterReveal}
+            initial={
+              isGiftOpen
+                ? { opacity: 0 }
+                : { opacity: 0, y: -90, scaleY: 0.7, scaleX: 0.94, transformOrigin: '50% 100%' }
+            }
+            animate={isGiftOpen ? { opacity: 1 } : { opacity: 1, y: 0, scaleY: 1, scaleX: 1 }}
             transition={{ duration: 0.72, ease: [0.2, 0.85, 0.25, 1] }}
           >
-            <motion.div
-              className={styles.letterTrail}
-              initial={{ opacity: 0, scaleY: 0.5, y: 40 }}
-              animate={{ opacity: [0, 0.36, 0], scaleY: [0.5, 1.05, 1.2], y: [40, 10, -6] }}
-              transition={{ duration: 0.68, ease: 'easeOut', times: [0, 0.42, 1] }}
-              aria-hidden="true"
-            />
-            <h2>{letter.letterTitle}</h2>
-            <TypingLetter paragraphs={letter.letterBody} />
-            <footer className={styles.footer}>
-              <p>{letter.closingMessage}</p>
-              <p className={styles.signature}>{letter.signature}</p>
-            </footer>
+            {isGiftOpen && letter.gift ? (
+              <div className={styles.giftContent}>
+                <div className={styles.screenSparkles} aria-hidden="true">
+                  {Array.from({ length: 12 }, (_, index) => (
+                    <span key={index} />
+                  ))}
+                </div>
+                <motion.figure
+                  className={styles.gift}
+                  initial={{ opacity: 0, y: 34, scale: 0.88, rotate: -2 }}
+                  animate={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
+                  transition={{ duration: 0.65, ease: [0.2, 0.9, 0.25, 1] }}
+                >
+                  <div className={styles.giftGlow} aria-hidden="true" />
+                  <div className={styles.giftImageWrap}>
+                    <img
+                      className={styles.giftImage}
+                      src={letter.gift.image}
+                      alt={letter.gift.alt}
+                    />
+                    <span className={`${styles.sparkle} ${styles.sparkleOne}`} aria-hidden="true" />
+                    <span className={`${styles.sparkle} ${styles.sparkleTwo}`} aria-hidden="true" />
+                    <span className={`${styles.sparkle} ${styles.sparkleThree}`} aria-hidden="true" />
+                    <span className={`${styles.sparkle} ${styles.sparkleFour}`} aria-hidden="true" />
+                    <span className={`${styles.sparkle} ${styles.sparkleFive}`} aria-hidden="true" />
+                    <span className={`${styles.sparkle} ${styles.sparkleSix}`} aria-hidden="true" />
+                    <span className={`${styles.sparkle} ${styles.sparkleSeven}`} aria-hidden="true" />
+                    <span className={`${styles.sparkle} ${styles.sparkleEight}`} aria-hidden="true" />
+                  </div>
+                  <figcaption className={styles.giftMessage}>{letter.gift.message}</figcaption>
+                </motion.figure>
+                <button
+                  className={styles.backButton}
+                  type="button"
+                  onClick={() => setIsGiftOpen(false)}
+                >
+                  Back to Letter
+                </button>
+              </div>
+            ) : (
+              <>
+                <motion.div
+                  className={styles.letterTrail}
+                  initial={{ opacity: 0, scaleY: 0.5, y: 40 }}
+                  animate={{ opacity: [0, 0.36, 0], scaleY: [0.5, 1.05, 1.2], y: [40, 10, -6] }}
+                  transition={{ duration: 0.68, ease: 'easeOut', times: [0, 0.42, 1] }}
+                  aria-hidden="true"
+                />
+                <h2>{letter.letterTitle}</h2>
+                <TypingLetter paragraphs={letter.letterBody} />
+                <footer className={styles.footer}>
+                  <p>{letter.closingMessage}</p>
+                  <p className={styles.signature}>{letter.signature}</p>
+                </footer>
+                {letter.gift ? (
+                  <div className={styles.giftSection}>
+                    <button
+                      className={styles.giftButton}
+                      type="button"
+                      onClick={() => setIsGiftOpen(true)}
+                    >
+                      <span aria-hidden="true">✧</span>
+                      Open Your Gift
+                      <span aria-hidden="true">✧</span>
+                    </button>
+                  </div>
+                ) : null}
+              </>
+            )}
           </motion.div>
         )}
       </AnimatePresence>

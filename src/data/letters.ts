@@ -1,6 +1,81 @@
 ﻿import type { LetterData } from "../types/letter.types";
 
+import roses from "../assets/roses.png";
+
 export const letters: LetterData[] = [
+  {
+    id: "8b8a74f0-c7d1-4f4a-9f9f-2dbf90e0f31b",
+    slug: "default",
+    recipientName: "Dear You",
+    introTitle: "A Digital Letter Made with Care",
+    introMessage:
+      "This little letter space is here to hold sincere words, gentle thoughts, and a meaningful message just for you.",
+    passwordRequired: false,
+    loadingMessage: "Preparing something special for you...",
+    letterTitle: "A Simple Reminder",
+    letterBody: [
+      "You are doing better than you think. Even your quiet progress matters, and it deserves to be honored.",
+      "Take pride in the way you continue to show up with compassion, even on difficult days.",
+      "Wherever you are right now, I hope this note reminds you that your story is still unfolding beautifully.",
+    ],
+    closingMessage: "Take your time. Be gentle with yourself.",
+    signature: "Warmly, A Friend",
+    theme: {
+      headingFont: '"Playfair Display", serif',
+      bodyFont: '"Lora", serif',
+      gradient:
+        "linear-gradient(140deg, #fff6f0 0%, #fff1ea 45%, #fff8f5 100%)",
+      accentColor: "#b96f5e",
+      surfaceColor: "rgba(255, 255, 255, 0.78)",
+      textColor: "#4c372f",
+      mutedTextColor: "#7c635a",
+      shadowColor: "rgba(128, 84, 72, 0.18)",
+      borderColor: "rgba(255, 255, 255, 0.52)",
+    },
+    background: {
+      ambientGradient:
+        "radial-gradient(circle at 10% 18%, rgba(255, 215, 194, 0.4), transparent 42%), radial-gradient(circle at 82% 24%, rgba(255, 234, 223, 0.72), transparent 46%), radial-gradient(circle at 50% 82%, rgba(255, 207, 190, 0.35), transparent 48%)",
+      overlayPatternOpacity: 0.12,
+      floatingElements: [
+        {
+          size: 112,
+          x: "13%",
+          y: "20%",
+          delay: 0.3,
+          duration: 8.2,
+          blur: 1,
+          color: "rgba(255, 196, 173, 0.58)",
+        },
+        {
+          size: 84,
+          x: "78%",
+          y: "20%",
+          delay: 1.1,
+          duration: 9.4,
+          blur: 0,
+          color: "rgba(255, 232, 220, 0.62)",
+        },
+        {
+          size: 100,
+          x: "21%",
+          y: "74%",
+          delay: 1.7,
+          duration: 9.7,
+          blur: 2,
+          color: "rgba(255, 209, 189, 0.48)",
+        },
+        {
+          size: 74,
+          x: "72%",
+          y: "74%",
+          delay: 0.6,
+          duration: 8.6,
+          blur: 1,
+          color: "rgba(245, 186, 168, 0.5)",
+        },
+      ],
+    },
+  },
   {
     id: "3d2504e0-4f89-41d3-9a0c-0305e82c3301",
     slug: "jasmine",
@@ -19,6 +94,12 @@ export const letters: LetterData[] = [
     ],
     closingMessage: "Thank you and Congratsss",
     signature: "EJ Pogi",
+    gift: {
+      image: roses,
+      alt: "A bouquet of roses for Jasmine",
+      message:
+        "Roses for you, Jasmine. Deserve mo lahat ng magaganda at masasayang bagay.",
+    },
     theme: {
       headingFont: '"Playfair Display", serif',
       bodyFont: '"Inter", sans-serif',
@@ -149,79 +230,6 @@ export const letters: LetterData[] = [
           duration: 10.1,
           blur: 2,
           color: "rgba(236, 151, 194, 0.5)",
-        },
-      ],
-    },
-  },
-  {
-    id: "8b8a74f0-c7d1-4f4a-9f9f-2dbf90e0f31b",
-    slug: "default",
-    recipientName: "Dear You",
-    introTitle: "A Digital Letter Made with Care",
-    introMessage:
-      "This little letter space is here to hold sincere words, gentle thoughts, and a meaningful message just for you.",
-    passwordRequired: false,
-    loadingMessage: "Preparing something special for you...",
-    letterTitle: "A Simple Reminder",
-    letterBody: [
-      "You are doing better than you think. Even your quiet progress matters, and it deserves to be honored.",
-      "Take pride in the way you continue to show up with compassion, even on difficult days.",
-      "Wherever you are right now, I hope this note reminds you that your story is still unfolding beautifully.",
-    ],
-    closingMessage: "Take your time. Be gentle with yourself.",
-    signature: "Warmly, A Friend",
-    theme: {
-      headingFont: '"Playfair Display", serif',
-      bodyFont: '"Lora", serif',
-      gradient:
-        "linear-gradient(140deg, #fff6f0 0%, #fff1ea 45%, #fff8f5 100%)",
-      accentColor: "#b96f5e",
-      surfaceColor: "rgba(255, 255, 255, 0.78)",
-      textColor: "#4c372f",
-      mutedTextColor: "#7c635a",
-      shadowColor: "rgba(128, 84, 72, 0.18)",
-      borderColor: "rgba(255, 255, 255, 0.52)",
-    },
-    background: {
-      ambientGradient:
-        "radial-gradient(circle at 10% 18%, rgba(255, 215, 194, 0.4), transparent 42%), radial-gradient(circle at 82% 24%, rgba(255, 234, 223, 0.72), transparent 46%), radial-gradient(circle at 50% 82%, rgba(255, 207, 190, 0.35), transparent 48%)",
-      overlayPatternOpacity: 0.12,
-      floatingElements: [
-        {
-          size: 112,
-          x: "13%",
-          y: "20%",
-          delay: 0.3,
-          duration: 8.2,
-          blur: 1,
-          color: "rgba(255, 196, 173, 0.58)",
-        },
-        {
-          size: 84,
-          x: "78%",
-          y: "20%",
-          delay: 1.1,
-          duration: 9.4,
-          blur: 0,
-          color: "rgba(255, 232, 220, 0.62)",
-        },
-        {
-          size: 100,
-          x: "21%",
-          y: "74%",
-          delay: 1.7,
-          duration: 9.7,
-          blur: 2,
-          color: "rgba(255, 209, 189, 0.48)",
-        },
-        {
-          size: 74,
-          x: "72%",
-          y: "74%",
-          delay: 0.6,
-          duration: 8.6,
-          blur: 1,
-          color: "rgba(245, 186, 168, 0.5)",
         },
       ],
     },

@@ -24,6 +24,12 @@ export interface LetterBackground {
   }>;
 }
 
+export interface LetterGift {
+  image: string;
+  alt: string;
+  message: string;
+}
+
 export interface LetterData {
   id: string;
   slug: string;
@@ -38,6 +44,7 @@ export interface LetterData {
   letterBody: string[];
   closingMessage: string;
   signature: string;
+  gift?: LetterGift;
   theme: LetterTheme;
   background: LetterBackground;
 }
